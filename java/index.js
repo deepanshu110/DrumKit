@@ -5,13 +5,14 @@ for(var i=0; i<z; i++){
 }
 function handleClick() {
 var btnHtml=this.innerHTML;
-
+btnAnimation(btnHtml);
  makeSound(btnHtml);
 }
 
 document.addEventListener("keypress", function(){
   var keyBoard= event.key;
   makeSound(keyBoard);
+  btnAnimation(keyBoard);
 });
 
 function makeSound(event){
@@ -55,5 +56,18 @@ function makeSound(event){
    default: console.log(this.innerHTML);
 
   }
+
+}
+
+function btnAnimation(currentKey){
+
+var activeKey =document.querySelector("."+currentKey);
+activeKey.classList.add("pressed");
+
+setTimeout( function() {
+  activeKey.classList.remove("pressed");
+}, 100);
+
+
 
 }
